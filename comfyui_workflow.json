@@ -1,0 +1,455 @@
+{
+  "3": {
+    "inputs": {
+      "anything3": [
+        "23",
+        0
+      ]
+    },
+    "class_type": "Anything Everywhere3",
+    "_meta": {
+      "title": "Anything Everywhere3"
+    }
+  },
+  "4": {
+    "inputs": {
+      "text": [
+        "7",
+        0
+      ],
+      "clip": [
+        "6",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Positive"
+    }
+  },
+  "6": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp16.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "7": {
+    "inputs": {
+      "string1": [
+        "26",
+        0
+      ],
+      "string2": [
+        "35",
+        0
+      ],
+      "string3": [
+        "34",
+        0
+      ],
+      "string4": [
+        "30",
+        0
+      ]
+    },
+    "class_type": "FlexibleStringMergerNode",
+    "_meta": {
+      "title": "APNext Flexible String Merger"
+    }
+  },
+  "8": {
+    "inputs": {
+      "scheduler": "sgm_uniform",
+      "steps": 24,
+      "denoise": 1
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "BasicScheduler"
+    }
+  },
+  "9": {
+    "inputs": {
+      "sampler_name": "dpmpp_2m"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "10": {
+    "inputs": {
+      "dishonesty_factor": -0.1,
+      "start_percent": 0.1,
+      "end_percent": 0.9,
+      "smooth_factor": 0.5,
+      "sampler": [
+        "9",
+        0
+      ]
+    },
+    "class_type": "AdvancedLyingSigmaSampler",
+    "_meta": {
+      "title": "Advanced Lying Sigma Sampler"
+    }
+  },
+  "11": {
+    "inputs": {},
+    "class_type": "ConditioningZeroOut",
+    "_meta": {
+      "title": "ConditioningZeroOut"
+    }
+  },
+  "13": {
+    "inputs": {
+      "seed": 946954078607749
+    },
+    "class_type": "Seed_",
+    "_meta": {
+      "title": "CreateSeedNode ♾️Mixlab"
+    }
+  },
+  "14": {
+    "inputs": {
+      "width": 1080,
+      "height": 1920,
+      "aspect_ratio": "custom",
+      "swap_dimensions": "Off",
+      "upscale_factor": 1,
+      "prescale_factor": 1,
+      "batch_size": 1
+    },
+    "class_type": "CR Aspect Ratio",
+    "_meta": {
+      "title": "🔳 CR Aspect Ratio"
+    }
+  },
+  "16": {
+    "inputs": {
+      "title_regex": "seed",
+      "input_regex": ".*",
+      "group_regex": ".*",
+      "anything": [
+        "13",
+        0
+      ]
+    },
+    "class_type": "Anything Everywhere?",
+    "_meta": {
+      "title": "Anything Everywhere?"
+    }
+  },
+  "17": {
+    "inputs": {
+      "anything": [
+        "14",
+        5
+      ]
+    },
+    "class_type": "Anything Everywhere",
+    "_meta": {
+      "title": "Anything Everywhere"
+    }
+  },
+  "18": {
+    "inputs": {
+      "seed": 1023340066477476,
+      "steps": 30,
+      "cfg": 1,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "sgm_uniform",
+      "denoise": 1,
+      "positive": [
+        "23",
+        0
+      ],
+      "negative": [
+        "32",
+        0
+      ],
+      "latent_image": [
+        "14",
+        5
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "19": {
+    "inputs": {
+      "unet_name": "flux1-dev.safetensors",
+      "weight_dtype": "fp8_e4m3fn"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "21": {
+    "inputs": {
+      "anything": [
+        "19",
+        0
+      ],
+      "anything2": [
+        "6",
+        0
+      ],
+      "anything3": [
+        "25",
+        0
+      ]
+    },
+    "class_type": "Anything Everywhere3",
+    "_meta": {
+      "title": "Anything Everywhere3"
+    }
+  },
+  "22": {
+    "inputs": {
+      "images": [
+        "31",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "23": {
+    "inputs": {
+      "guidance": 3.5,
+      "conditioning": [
+        "4",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "FluxGuidance"
+    }
+  },
+  "25": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "26": {
+    "inputs": {
+      "makeup_style": "-",
+      "makeup_color": "-",
+      "eyeshadow": false,
+      "eyeliner": false,
+      "mascara": false,
+      "blush": false,
+      "lipstick": false,
+      "lip_gloss": false,
+      "active": true,
+      "seed": 0
+    },
+    "class_type": "PortraitMasterMakeup",
+    "_meta": {
+      "title": "Portrait Master: Make-up"
+    }
+  },
+  "27": {
+    "inputs": {
+      "natural_skin": 0,
+      "bare_face": 0,
+      "washed_face": 0,
+      "dried_face": 0,
+      "skin_details": 0,
+      "skin_pores": 0,
+      "dimples": 0,
+      "wrinkles": 0,
+      "freckles": 0,
+      "moles": 0,
+      "skin_imperfections": 0,
+      "skin_acne": 0,
+      "tanned_skin": 0,
+      "eyes_details": 2,
+      "iris_details": 2,
+      "circular_iris": 2,
+      "circular_pupil": 2,
+      "active": true,
+      "seed": 135,
+      "text_in": [
+        "28",
+        0
+      ]
+    },
+    "class_type": "PortraitMasterSkinDetails",
+    "_meta": {
+      "title": "Portrait Master: Skin Details"
+    }
+  },
+  "28": {
+    "inputs": {
+      "shot": "random 🎲",
+      "shot_weight": 1,
+      "gender": "Woman",
+      "androgynous": 0,
+      "ugly": 0,
+      "ordinary_face": 0,
+      "age": "20",
+      "nationality_1": "-",
+      "nationality_2": "-",
+      "nationality_mix": 0.5,
+      "body_type": "-",
+      "body_type_weight": 1,
+      "eyes_color": "-",
+      "eyes_shape": "-",
+      "lips_color": "-",
+      "lips_shape": "-",
+      "facial_expression": "-",
+      "facial_expression_weight": 1,
+      "face_shape": "-",
+      "face_shape_weight": 1,
+      "facial_asymmetry": 0,
+      "hair_style": "-",
+      "hair_color": "-",
+      "hair_length": "-",
+      "disheveled": 0,
+      "beard": "-",
+      "beard_color": "-",
+      "active": true,
+      "seed": 1835
+    },
+    "class_type": "PortraitMasterBaseCharacter",
+    "_meta": {
+      "title": "Portrait Master: Base Character"
+    }
+  },
+  "30": {
+    "inputs": {
+      "seed": 282218974327706,
+      "custom": "",
+      "subject": "",
+      "artform": "photography",
+      "photo_type": "random",
+      "body_types": "random",
+      "default_tags": "random",
+      "roles": "random",
+      "hairstyles": "random",
+      "additional_details": "random",
+      "photography_styles": "random",
+      "device": "random",
+      "photographer": "random",
+      "artist": "random",
+      "digital_artform": "random",
+      "place": "disabled",
+      "lighting": "random",
+      "clothing": "random",
+      "composition": "random",
+      "pose": "random",
+      "background": "random"
+    },
+    "class_type": "PromptGenerator",
+    "_meta": {
+      "title": "Auto Prompter"
+    }
+  },
+  "31": {
+    "inputs": {
+      "samples": [
+        "18",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "32": {
+    "inputs": {
+      "conditioning": [
+        "23",
+        0
+      ]
+    },
+    "class_type": "ConditioningZeroOut",
+    "_meta": {
+      "title": "ConditioningZeroOut"
+    }
+  },
+  "34": {
+    "inputs": {
+      "modal_combos": true,
+      "style": "high fashion photography",
+      "subject": "",
+      "framing": "",
+      "setting_background": "indoor",
+      "lighting": "soft lighting",
+      "camera_angle": "eye level",
+      "camera_properties": "Leica T",
+      "film_types": "film grain",
+      "lenses": "50mm",
+      "filters_effects": "soft focus",
+      "photographers": "",
+      "preview": "high fashion photography photo of , indoor, soft lighting, eye level, Leica T, film grain, 50mm, soft focus",
+      "log_prompt": "Yes"
+    },
+    "class_type": "BilboXPhotoPrompt",
+    "_meta": {
+      "title": "BilboX PromptGeek Photo Prompt"
+    }
+  },
+  "35": {
+    "inputs": {
+      "prompt": "",
+      "separator": ",",
+      "seed": 339261553220307,
+      "attributes": false,
+      "portrait_poses": "None",
+      "poses": "None",
+      "string": [
+        "36",
+        0
+      ]
+    },
+    "class_type": "PosesPromptNode",
+    "_meta": {
+      "title": "APNext Poses"
+    }
+  },
+  "36": {
+    "inputs": {
+      "model_pose": "Kneeling Pose",
+      "clothes": "-",
+      "female_lingerie": "random 🎲",
+      "makeup": "Glam Makeup",
+      "light_type": "random 🎲",
+      "light_direction": "-",
+      "light_weight": 1,
+      "style_1": "-",
+      "style_1_weight": 1,
+      "style_2": "-",
+      "style_2_weight": 1,
+      "photorealism_improvement": true,
+      "active": true,
+      "seed": 269,
+      "text_in": [
+        "27",
+        0
+      ]
+    },
+    "class_type": "PortraitMasterStylePose",
+    "_meta": {
+      "title": "Portrait Master: Style & Pose"
+    }
+  }
+}
