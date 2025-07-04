@@ -1,49 +1,45 @@
 FROM python:3.10-slim
+
+# Set working directory
 WORKDIR /app
 
+# Install required packages
 RUN apt-get update && \
     apt-get install -y git ffmpeg libgl1 unzip wget && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Clone ComfyUI repo
 RUN git clone https://github.com/comfyanonymous/ComfyUI.git
 WORKDIR /app/ComfyUI
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Clone custom nodes
 WORKDIR /app/ComfyUI/custom_nodes
+RUN git clone https://github.com/rgthree/rgthree-comfy.git && \
+    git clone https://github.com/florestefano1975/comfyui-portrait-master.git && \
+    git clone https://github.com/chrisgoringe/cg-use-everywhere.git && \
+    git clone https://github.com/dagthomas/comfyui_dagthomas.git && \
+    git clone https://github.com/syllebra/bilbox-comfyui.git && \
+    git clone https://github.com/kijai/ComfyUI-KJNodes.git && \
+    git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git
 
-RUN git clone https://github.com/rgthree/rgthree-comfy.git
-RUN git clone https://github.com/florestefano1975/comfyui-portrait-master.git
-RUN git clone https://github.com/chrisgoringe/cg-use-everywhere.git
-RUN git clone https://github.com/dagthomas/comfyui_dagthomas.git
-RUN git clone https://github.com/syllebra/bilbox-comfyui.git
-RUN git clone https://github.com/kijai/ComfyUI-KJNodes.git
-RUN git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git
-
+# Install requirements for a specific node
 WORKDIR /app/ComfyUI/custom_nodes/comfyui_dagthomas
 RUN pip install --no-cache-dir -r requirements.txt && \
     pip install "huggingface-hub>=0.26.0,<1.0"
 
+# Go back to root project
 WORKDIR /app/ComfyUI
 
-# Create model directories
-RUN mkdir -p models/clip models/vae models/unet
-
-WORKDIR /app/ComfyUI/models/clip
-RUN wget https://huggingface.co/Comfy-Org/stable-diffusion-3.5-fp8/resolve/main/text_encoders/clip_l.safetensors && \
-    wget https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors
-
-WORKDIR /app/ComfyUI/models/vae
-RUN wget --header="Authorization: Bearer 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" https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors
-
-WORKDIR /app/ComfyUI/models/unet
-RUN wget --header="Authorization: Bearer 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" https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.safetensors
-
-WORKDIR /app
-
+# Copy project files
 COPY comfyui_workflow.json comfyui_workflow.json
 COPY requirements.txt requirements.txt
 COPY handler.py handler.py
+COPY entrypoint.sh /entrypoint.sh
 
-RUN pip install --no-cache-dir -r requirements.txt
+# Install any extra Python dependencies
+RUN pip install --no-cache-dir -r /app/ComfyUI/requirements.txt
+RUN chmod +x /entrypoint.sh
 
-CMD ["python3", "handler.py"]
+# Use entrypoint to download models at runtime
+ENTRYPOINT ["/entrypoint.sh"]
