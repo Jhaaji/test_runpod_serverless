@@ -1,0 +1,412 @@
+{
+  "3": {
+    "inputs": {
+      "anything": [
+        "23",
+        0
+      ]
+    },
+    "class_type": "Anything Everywhere3",
+    "_meta": {
+      "title": "Anything Everywhere3"
+    }
+  },
+  "4": {
+    "inputs": {
+      "text": [
+        "7",
+        0
+      ],
+      "clip": [
+        "37",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Positive"
+    }
+  },
+  "6": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp16.safetensors",
+      "type": "flux"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "7": {
+    "inputs": {
+      "string1": [
+        "26",
+        0
+      ],
+      "string2": [
+        "35",
+        0
+      ],
+      "string3": [
+        "34",
+        0
+      ],
+      "string4": [
+        "30",
+        0
+      ]
+    },
+    "class_type": "FlexibleStringMergerNode",
+    "_meta": {
+      "title": "APNext Flexible String Merger"
+    }
+  },
+  "14": {
+    "inputs": {
+      "width": 1080,
+      "height": 1920,
+      "aspect_ratio": "custom",
+      "swap_dimensions": "Off",
+      "upscale_factor": 1,
+      "prescale_factor": 1,
+      "batch_size": 1
+    },
+    "class_type": "CR Aspect Ratio",
+    "_meta": {
+      "title": "🔳 CR Aspect Ratio"
+    }
+  },
+  "18": {
+    "inputs": {
+      "seed": 1023340066477476,
+      "steps": 30,
+      "cfg": 1,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "sgm_uniform",
+      "denoise": 1,
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "32",
+        0
+      ],
+      "latent_image": [
+        "14",
+        5
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "19": {
+    "inputs": {
+      "unet_name": "flux1-dev.safetensors",
+      "weight_dtype": "fp8_e4m3fn"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "21": {
+    "inputs": {
+      "anything": [
+        "37",
+        0
+      ],
+      "anything2": [
+        "37",
+        1
+      ],
+      "anything3": [
+        "25",
+        0
+      ]
+    },
+    "class_type": "Anything Everywhere3",
+    "_meta": {
+      "title": "Anything Everywhere3"
+    }
+  },
+  "22": {
+    "inputs": {
+      "images": [
+        "31",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "23": {
+    "inputs": {
+      "guidance": 3.5,
+      "conditioning": [
+        "4",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "FluxGuidance"
+    }
+  },
+  "25": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "26": {
+    "inputs": {
+      "makeup_style": "-",
+      "makeup_color": "-",
+      "eyeshadow": false,
+      "eyeliner": false,
+      "mascara": false,
+      "blush": false,
+      "lipstick": false,
+      "lip_gloss": false,
+      "active": true,
+      "text_in": 0,
+      "seed": 1025
+    },
+    "class_type": "PortraitMasterMakeup",
+    "_meta": {
+      "title": "Portrait Master: Make-up"
+    }
+  },
+  "27": {
+    "inputs": {
+      "natural_skin": 0,
+      "bare_face": 0,
+      "washed_face": 0,
+      "dried_face": 0,
+      "skin_details": 0,
+      "skin_pores": 0,
+      "dimples": 0,
+      "wrinkles": 0,
+      "freckles": 0,
+      "moles": 0,
+      "skin_imperfections": 0,
+      "skin_acne": 0,
+      "tanned_skin": 0,
+      "eyes_details": 2,
+      "iris_details": 2,
+      "circular_iris": 2,
+      "circular_pupil": 2,
+      "active": true,
+      "text_in": [
+        "28",
+        0
+      ],
+      "seed": 1016
+    },
+    "class_type": "PortraitMasterSkinDetails",
+    "_meta": {
+      "title": "Portrait Master: Skin Details"
+    }
+  },
+  "28": {
+    "inputs": {
+      "shot": "random 🎲",
+      "shot_weight": 1,
+      "gender": "Woman",
+      "androgynous": 0,
+      "ugly": 0,
+      "ordinary_face": 0,
+      "age": "20",
+      "nationality_1": "-",
+      "nationality_2": "-",
+      "nationality_mix": 0.5,
+      "body_type": "-",
+      "body_type_weight": 1,
+      "eyes_color": "-",
+      "eyes_shape": "-",
+      "lips_color": "-",
+      "lips_shape": "-",
+      "facial_expression": "-",
+      "facial_expression_weight": 1,
+      "face_shape": "-",
+      "face_shape_weight": 1,
+      "facial_asymmetry": 0,
+      "hair_style": "-",
+      "hair_color": "-",
+      "hair_length": "-",
+      "disheveled": 0,
+      "beard": "-",
+      "beard_color": "-",
+      "active": true,
+      "text_in": 1835,
+      "seed": 2007
+    },
+    "class_type": "PortraitMasterBaseCharacter",
+    "_meta": {
+      "title": "Portrait Master: Base Character"
+    }
+  },
+  "30": {
+    "inputs": {
+      "seed": 306373408004161,
+      "custom": "",
+      "subject": "",
+      "artform": "photography",
+      "photo_type": "random",
+      "body_types": "random",
+      "default_tags": "random",
+      "roles": "random",
+      "hairstyles": "random",
+      "additional_details": "random",
+      "photography_styles": "random",
+      "device": "random",
+      "photographer": "random",
+      "artist": "random",
+      "digital_artform": "random",
+      "place": "disabled",
+      "lighting": "random",
+      "clothing": "random",
+      "composition": "random",
+      "pose": "random",
+      "background": "random"
+    },
+    "class_type": "PromptGenerator",
+    "_meta": {
+      "title": "Auto Prompter"
+    }
+  },
+  "31": {
+    "inputs": {
+      "samples": [
+        "18",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "32": {
+    "inputs": {
+      "conditioning": [
+        "23",
+        0
+      ]
+    },
+    "class_type": "ConditioningZeroOut",
+    "_meta": {
+      "title": "ConditioningZeroOut"
+    }
+  },
+  "34": {
+    "inputs": {
+      "modal_combos": true,
+      "style": "high fashion photography",
+      "subject": "nude, naked, small boobs, hairy pussy, nsfw, sex pose, sex toy, small pink tits, pink nipple",
+      "framing": "",
+      "setting_background": "indoor",
+      "lighting": "soft lighting",
+      "camera_angle": "eye level",
+      "camera_properties": "Leica T",
+      "film_types": "film grain",
+      "lenses": "50mm",
+      "filters_effects": "soft focus",
+      "photographers": "",
+      "preview": "high fashion photography photo of nude, naked, small boobs, hairy pussy, nsfw, sex pose, sex toy, small pink tits, pink nipple, indoor, soft lighting, eye level, Leica T, film grain, 50mm, soft focus",
+      "log_prompt": "Yes"
+    },
+    "class_type": "BilboXPhotoPrompt",
+    "_meta": {
+      "title": "BilboX PromptGeek Photo Prompt"
+    }
+  },
+  "35": {
+    "inputs": {
+      "prompt": "Girl posing for a photoshoot",
+      "separator": ",",
+      "string": [
+        "36",
+        0
+      ],
+      "seed": 0,
+      "attributes": "None",
+      "portrait_poses": "None",
+      "poses": "None"
+    },
+    "class_type": "PosesPromptNode",
+    "_meta": {
+      "title": "APNext Poses"
+    }
+  },
+  "36": {
+    "inputs": {
+      "model_pose": "Kneeling Pose",
+      "clothes": "-",
+      "female_lingerie": "random 🎲",
+      "makeup": "Glam Makeup",
+      "light_type": "random 🎲",
+      "light_direction": "-",
+      "light_weight": 1,
+      "style_1": "-",
+      "style_1_weight": 1,
+      "style_2": "-",
+      "style_2_weight": 1,
+      "photorealism_improvement": true,
+      "active": true,
+      "text_in": [
+        "27",
+        0
+      ],
+      "seed": 932
+    },
+    "class_type": "PortraitMasterStylePose",
+    "_meta": {
+      "title": "Portrait Master: Style & Pose"
+    }
+  },
+  "37": {
+    "inputs": {
+      "PowerLoraLoaderHeaderWidget": {
+        "type": "PowerLoraLoaderHeaderWidget"
+      },
+      "lora_1": {
+        "on": true,
+        "lora": "Client\\vanessa.safetensors",
+        "strength": 0.2
+      },
+      "lora_2": {
+        "on": true,
+        "lora": "NSFW\\nipplediffusion-f1.safetensors",
+        "strength": 1
+      },
+      "lora_3": {
+        "on": true,
+        "lora": "NSFW\\pussy flux lora.safetensors",
+        "strength": 0.4
+      },
+      "➕ Add Lora": "",
+      "model": [
+        "19",
+        0
+      ],
+      "clip": [
+        "6",
+        0
+      ]
+    },
+    "class_type": "Power Lora Loader (rgthree)",
+    "_meta": {
+      "title": "Power Lora Loader (rgthree)"
+    }
+  }
+}
