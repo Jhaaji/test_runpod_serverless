@@ -49,7 +49,7 @@ def run_workflow(inputs):
 
 def handler(event):
     if not os.path.exists("/tmp/comfyui_started"):
-        start_comfui()
+        start_comfyui()
         with open("/tmp/comfyui_started", "w") as f:
             f.write("yes")
 
